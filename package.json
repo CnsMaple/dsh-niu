@@ -1,0 +1,50 @@
+{
+  "name": "dsh-niubash",
+  "version": "0.2.3-alpha.2",
+  "description": "DeepSeek Harness Niubash shell bundle: one runtime switch that runs every agent preset's shell on Niubash",
+  "type": "module",
+  "main": "./index.js",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./sandbox": "./sandbox/index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "sandbox",
+    "cordis.patch.yml",
+    "locale",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "CnsMaple",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CnsMaple/dsh-niu.git"
+  },
+  "engines": {
+    "dsh": "0.2.3-alpha.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-pwsh-sandbox": "0.2.3-alpha.2"
+  }
+}

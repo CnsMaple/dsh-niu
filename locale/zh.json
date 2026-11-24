@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Niubash 命令行",
+    "description": "Windows：请先单独安装 Niubash，并将 niu.exe 加入 PATH。此插件在 profile 及 standard、PTC、Cordis 预设中启用 Niubash 并禁用 PowerShell shell/tool，不改变 minimal 预设。可在“插件 → Niubash 命令行”查看只读说明；实际配置请检查 profile。"
+  }
+}

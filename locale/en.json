@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Niubash shell",
+    "description": "Windows: install Niubash separately and put niu.exe on PATH. This bundle enables Niubash and disables PowerShell shell/tool rows in the profile and standard, PTC and Cordis presets; minimal is unchanged. Open Plugins → Niubash shell for read-only information and check the profile for the effective configuration."
+  }
+}

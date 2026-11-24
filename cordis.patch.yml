@@ -1,0 +1,34 @@
+# Host-plane patch for the Niubash bundle.
+#
+# One context may register only one `ctx.shell` provider. Disabling both
+# first-party providers (bash-sandbox, pwsh-sandbox) and inserting the Niubash
+# executor is what makes Niubash the harness-wide shell: every consumer of
+# `ctx.shell` — the model's bash tool, background jobs, hook bridges,
+# in-process callers, and any agent preset, official or user-defined — runs
+# `niu -c`. No agent preset is edited, so upgrading DSH never requires
+# resnapshotting presets.
+#
+# `tool-bash` stays enabled: it is a dialect-neutral consumer of `ctx.shell`
+# and advertises Bash syntax, which is exactly what Niubash speaks.
+# `tool-pwsh` is disabled because it advertises PowerShell syntax while every
+# command now runs in niu; leaving it on would teach the model a false dialect.
+- id: bash-sandbox
+  disabled: true
+
+- id: pwsh-sandbox
+  disabled: true
+
+- id: tool-pwsh
+  disabled: true
+
+- id: tool-bash
+  disabled: false
+
+- insert:
+    - id: niu-sandbox
+      name: 'dsh-niubash/sandbox'
+      disabled: false
+      config:
+        niuPath: niu
+    - id: ui-niu
+      name: 'dsh-niubash'
